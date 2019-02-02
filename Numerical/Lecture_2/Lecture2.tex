@@ -1,0 +1,105 @@
+\documentclass[]{article}
+\usepackage{amsmath}
+\usepackage{xcolor}
+\newtheorem{Def}{Definition}
+%opening
+\title{MTH 343 Numerical Analysis Lecture 2: Review of Computer Arithmetic}
+\author{Sheikh Abdul Raheem Ali}
+
+\begin{document}
+
+\maketitle
+
+\section*{Remarks}
+
+\begin{enumerate}
+	\item Numerical Analysis requires such tedious \& repetitive operations that only a computer can perform quickly \& without and mistakes.
+	\item Computers are dumb and must be given complete instructions of every step. Programs can be written in any language you like. 
+	\item Writing code is not very important because extensive commercial software packages are available. 
+		\begin{enumerate}
+			\item IMSL: International Mathematics \& Statistics Library
+			\item NAG: Numerical Algorithm Group
+			\item LAPACK: Linear Algebra package
+		\end{enumerate}	
+		Alternatives: Computer Algebra Systems
+		\begin{enumerate}
+			\item Mathematica
+			\item Maple
+			\item MATLAB
+		\end{enumerate}
+	
+\end{enumerate}
+
+\section*{Floating-Point Arithmetic}
+
+In computers, numbers are stored as floating point quantities in the general form: 
+\[ \pm \cdot (d_1 d_2 d_3 \ldots d_p) \cdot \beta^e, \] where
+$ p $ = precision, the number of significant bits (digits), $ e $ = an integer exponent ranging from $ E_{min} $ to $ E_{max} $, $ \beta $ = the number base, normally 2, 10, 16,
+$ d_i: $ ranges from 0 to $ \beta - 1 $, and $ d_1 d_2 d_3 \ldots d_p $ is called the fractional part (mantissa). 
+
+
+
+Sometimes numbers are normalized: $ 0.023 -> 0.23 \cdot 10^{-1} $
+
+Let us examine the case $ \beta = 10 $ (Decimal)
+
+\begin{eqnarray*}
+	3216 &=& 3\cdot10^3 + 2\cdot10^2 + 1\cdot10^1 + 6\cdot10^0\\
+	&=& 10^4(3\cdot10^{-1} + 2\cdot10^{-2} + 1\cdot10^{-3} + 6\cdot10^{-4}) \\
+	&=& (.3216)\cdot10^4 
+\end{eqnarray*}
+
+
+
+Now let us examine the case $ \beta = 2 $ (Binary)
+
+\begin{eqnarray*}
+65 &=& 2^6 + 2^0 \\
+      &=& 2^7(2^{-1}) + 2^{-7} \\
+ &=&(.1000001)_2 \cdot 2^7 
+\end{eqnarray*}
+
+\begin{eqnarray*}
+	23 &=& 2^4 + 2^3 + 2^2 \\
+	&=& 2^5(2^{-1} + 2^{-2} + 2^{-3}) \\
+	&=& (.111)_2 \cdot 2^5
+\end{eqnarray*}
+
+\begin{eqnarray*}
+	  85 &=& 2^6 + 2^4 + 2^2 + 2^0 \\
+	&=& 2^7(2^{-1} + 2^{-3} + 2^{-6} + 2^{-7}) \\
+	&=& (.1010011)_2 \cdot 2^7 
+\end{eqnarray*}
+
+\begin{eqnarray*}
+	5.75 &=& 2^2 + 2^0 + 2^{-1} + 2^{-2} \\
+	&=& 2^3(2^{-1} + 2^{-3} + 2^{-4} + 2^{5}) \\
+	&=& (.10111)_2 \cdot 2^3 
+\end{eqnarray*}
+
+
+
+
+\[ 0.6 = (.1001100110011001\ldots)_2 \]
+
+This last example shows us a conversion error: the decimal is recurring, but since the computer only has a finite number of bits, the value is truncated at some point.
+
+\begin{Def}[Round off error:]
+The error that is produced when a computer is used to perform real-number calculations is called round-off error.
+\end{Def}
+
+There are two ways of truncating the mantissa:
+
+\begin{enumerate}
+	\item Chopping
+	\item Rounding 
+\end{enumerate}
+
+Ex. $ 13.76573 = .1376 {\bf{\color{red} |}} 573 \cdot 10^2 $
+
+4 digits chopping: $ .1376 \cdot 10^2 $
+4 digits rounding: $ .1377 \cdot 10^2 $
+
+Numbers are \textbf{rounded} when stored in the floating point format.
+
+\end{document}
