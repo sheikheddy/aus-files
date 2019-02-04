@@ -1,0 +1,23 @@
+\documentclass[]{article}
+
+\title{MTH 343 Numerical Analysis Lecture 4: Bisection Method}
+\author{Sheikh Abdul Raheem Ali}
+
+\begin{document}
+	
+	\maketitle
+	
+	Its accuracy after n iterations is known in advance which is $ \le |\frac{b-a}{2^n}| $
+	
+	\[ |P_n - P| \le \frac{b-a}{2^n} \]
+	
+	Where $ P $ = exact value, and $ P_n $ = midpoint (approx)
+	
+	In the previous example, find how many iterations are needed to achieve an accuracy for $ 10^{-4}  (x^2 - 2 = 0 on [1,2])$.
+	
+	$ |E_n| \le \frac{2-1}{2^n} < 0.0001 $ 
+	$ 2^n > 10,000 $
+	$ \ln both sides $
+	$ n \cdot \ln2 > \ln(10,00)$
+	$ n > \frac{\ln(10000)}{\ln2} $
+\end{document}
