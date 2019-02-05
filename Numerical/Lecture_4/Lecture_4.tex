@@ -1,23 +1,72 @@
 \documentclass[]{article}
+\usepackage{amsmath}
 
-\title{MTH 343 Numerical Analysis Lecture 4: Bisection Method}
+\title{MTH 343 Numerical Analysis Lecture 4: Bisection Method (f(x) = 0)}
 \author{Sheikh Abdul Raheem Ali}
+\date{February 3, 2019}
 
 \begin{document}
 	
 	\maketitle
 	
-	Its accuracy after n iterations is known in advance which is $ \le |\frac{b-a}{2^n}| $
+	\section*{Strategy/Algorithm}
+	
+	Assume $ f(x) $ is continuous.
+	
+	\begin{enumerate}
+		\item Begin with two values $ x = a \& x = b $ that bracket the root by finding $ f(a) \cdot f(b) < 0  $ (i.e they are of opposite signs).
+		
+		\item The method successfully divides the interval in half \& replaces one endpoint by the midpoint so that the root is again bracketed.
+		
+	\end{enumerate}
+	
+	\[ x^2 - 2 = 0, (\text{ solution } x = \sqrt{2}) \text{ on the interval} \ [1,2] \ \begin{cases}
+	f(a = 1) = -1 & < 0 \\
+	f(b = 2) = 2 & > 0
+	\end{cases}\]
+	
+	\begin{tabular}{c c c c c}
+		\# of iterations \textbf{$ n $} & \textbf{$ a_n $} & \textbf{$ b_n $} & midpoint \textbf{$ P_n $} & f($ P_n $) \\
+		
+		0&1&2&1.5&0.25 \\
+		1&1&1.5&1.25& -0.4375\\
+		2&1.25&1.5&1.375& -0.1094\\
+		3&1.375&1.5&1.4375& +0.0664\\
+		4&1.4375&1.375&1.40625& -0.0225\\
+		5&1.4375&1.40625&1.421875& -0.0217\\
+		6&1.40625&1.421895&1.4140625& -0.0004\\
+		7&1.4140625&1.421875&1.41796875& -0.0106
+		
+		 
+	\end{tabular}
+\section*{Remarks}
+
+\begin{enumerate}
+	
+	\item The main advantage of the bisection method is that it is guaranteed to work if $ f(x) $ is continuous on $ [a,b] $ and $ a,b $ bracket the root.
+		
+	 \item Its accuracy after n iterations is known in advance which is $ \le |\frac{b-a}{2^n}| $
 	
 	\[ |P_n - P| \le \frac{b-a}{2^n} \]
 	
 	Where $ P $ = exact value, and $ P_n $ = midpoint (approx)
 	
-	In the previous example, find how many iterations are needed to achieve an accuracy for $ 10^{-4}  (x^2 - 2 = 0 on [1,2])$.
+	In the previous example, find how many iterations are needed to achieve an accuracy for $ 10^{-4}  (x^2 - 2 = 0  \text{ on }  [1,2])$.
 	
-	$ |E_n| \le \frac{2-1}{2^n} < 0.0001 $ 
-	$ 2^n > 10,000 $
-	$ \ln both sides $
-	$ n \cdot \ln2 > \ln(10,00)$
-	$ n > \frac{\ln(10000)}{\ln2} $
+	
+	\begin{align*}
+	 |E_n| \le \frac{2-1}{2^n} < 0.0001 \\
+	 2^n > 10,000 \\
+	 n \cdot \ln2 > \ln(10,000) \\
+	 n > \frac{\ln(10,000)}{\ln2} \approx 13.28 \\
+	 n = 14 \ terms
+	\end{align*}
+	
+	\item A minor disadvantage is that it is slow to converge, however with speedy computers available the slowness is of less concern. 
+	
+	\item When multiple roots are concerned, the method may not be applicable since it might not change signs. 
+\end{enumerate}	
+
+\[ 	0 = x^2 - 6x + 9 = (x-3)^2, \  x = 3  \]
+	
 \end{document}
