@@ -1,0 +1,81 @@
+\documentclass[]{article}
+\usepackage{amsmath}
+
+%opening
+\title{MTH 343 Numerical Analysis: Quiz 1}
+\author{Sheikh Abdul Raheem Ali}
+
+\begin{document}
+
+\maketitle
+
+\section*{PAGE 28/29:}		
+
+\begin{enumerate}
+	\item[1C] Compute the absolute and relative error in approximations of $ p \text{ by } p^* $.
+	\begin{align*}
+	p = \pi && p^* = 3.1416
+	\end{align*}
+	\item[2A] Find the largest interval in which $ p^* $ must lie to approximate $ p $ with relative error at most $ 10^-4 $.
+	\begin{align*}
+		p = \sqrt{2}
+	\end{align*}
+	\item[3A,B] Suppose $ p^* $ must approximate $ p $ with relative error at most $ 10^{-3} $. Find the largest interval in which $ p^* $ must lie for:
+	\begin{align*}
+	p_a = 150 && p_b = 900
+	\end{align*}
+	\item[4] Perform the following computations (i) exactly, (ii) using three-digit chopping arithmetic, and (iii) using three-digit rounding arithmetic. (iv) Compute the relative errors in parts (ii) and (iii).
+	\begin{align*}
+	\frac{4}{5} + \frac{1}{3}
+	\end{align*}
+	\begin{align*}
+	\frac{4}{5} \cdot \frac{1}{3}
+	\end{align*}
+	\begin{align*}
+	(\frac{1}{3} - \frac{3}{11}) + \frac{3}{20}
+	\end{align*}
+	\begin{align*}
+	(\frac{1}{3} + \frac{3}{11}) - \frac{3}{20}
+	\end{align*}
+
+	\item[5C,E,G] Use three-digit rounding arithmetic to perform the following calculations. Compute the absolute error and relative error with the exact value determined to at least five digits.
+	
+	\begin{align*}
+		(121 - 0.327) - 119
+	\end{align*}
+
+	\begin{align*}
+		\frac{\frac{13}{14} - \frac{6}{7}}{2e - 5.4}
+	\end{align*}
+	
+	\begin{align*}
+		(\frac{2}{9})\cdot(\frac{9}{7})
+	\end{align*}
+
+	\item[6E] Repeat exercise 5 using four digit rounding arithmetic.
+	
+	\item[15 A,B] Use the 64-bit long real format to find the decimal equivalent of the following floating-point machine numbers:
+	
+	\begin{enumerate}
+		\item 0 10000001010 1001001 100000000000000000000000000000000000000000
+		\item 1 10000001010 1001001 100000000000000000000000000000000000000000
+	\end{enumerate}
+\end{enumerate}
+
+\section*{PAGE 54/55:} 
+
+\begin{enumerate}
+	\item[1] Use the Bisection method to find $ p_3 $ for $ f(x) = \sqrt{x} - \cos x \text{on} [0,1]$.
+	\item[3 A,B] Use the Bisection method to find solutions accurate to within $ 10^{-2} $ for $ x^4 - 2x^3 - 4x^2 + 4x +4 = 0 $ on the intervals [-2,-1] and [0, 2].
+	\item[5 B,C 6B] Use the Bisection method to find solutions, accurate to within $ 10^{-5} $ for the following problems:
+	\begin{itemize}
+		\item $ 2x + 3\cos x - e^x = 0 $ for $ 1 \le x \le 2 $ and $ 2 \le x \le 4 $
+		\item $ x^2 - 4x + 4 - \ln x = 0 $ for $ 0 \le x \le 0.5 $ and $ 0.5 \le x \le 1 $
+		\item $ e^x - x^2 +3x - 2 = 0 $ for $ 0 \le x \le 1 $
+	\end{itemize}
+	
+	\item[11A] Let $ f(x) = (x+2)(x+1)x(x-1)^3(x-2). $ To which zero of f does the Bisection method converge when applied on the interval $ [-1.5, 2.5] $
+	\item[13] Find an approximation to $ \sqrt{25} $ correct to within $ 10^{-4} $ using the Bisection Algorithm. 
+\end{enumerate}
+
+\end{document}
