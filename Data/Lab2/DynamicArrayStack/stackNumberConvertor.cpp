@@ -7,12 +7,13 @@ int main()
 	cout << "Please enter a base 10 integer: ";
 	cin >> n;
 
-	int option;
+	int option = -1;
 	do{
 		cout << "Convert the number from decimal into: "
 			<< "\n 0 - Binary"
 			<< "\n 1 - Octal"
 			<< "\n 2 - Hexadecimal" << endl;
+		cin.clear();
 		cin >> option;
 
 	}while(option < 0 || option > 2);
@@ -36,7 +37,7 @@ int main()
 	for(int i = n; i > 0; i/=16){
 		s.Push(i%16);
 	}
-	cout << "Hex: " << std::hex << s << endl;
+	cout << "Hex: " << s << endl;
 			
 			break;
 	}

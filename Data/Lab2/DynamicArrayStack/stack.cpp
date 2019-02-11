@@ -142,6 +142,6 @@ Output: All items in the stack are printed to standard output as if they were po
 ostream& operator<<(ostream& cout, const StackType& s)
 {
 	for(int i=s.top; i>= 0; i--)
-		cout << s.items[i];
+		cout << std::hex << s.items[i];
 }
 
