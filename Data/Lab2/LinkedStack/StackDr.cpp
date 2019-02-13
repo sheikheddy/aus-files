@@ -16,7 +16,7 @@ bool isInteger(char * s)
 int main()
 {
 	StackType s;
-	
+
 	//This is for EX4
 	char  pstfix[80];
 	cout << "Enter post fix notation : ";

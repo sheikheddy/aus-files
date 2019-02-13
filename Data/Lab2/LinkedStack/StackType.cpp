@@ -91,32 +91,51 @@ bool StackType::IsEmpty() const
 }  
 
 StackType::StackType(const StackType & original){
-	NodeType* ptr = original.topPtr;
-	while(ptr != NULL){
-	NodeType* location = new NodeType;
-	location->info = ptr->info;
-	location->next = topPtr->next;
-	topPtr = location;
-	ptr = ptr->next;
-	}
+
+NodeType* p1;
+NodeType* p2;//next
+
+if( original.topPtr == NULL ){
+    topPtr = NULL;
+}else
+{
+    topPtr = new NodeType;
+    topPtr->info = original.topPtr->info;
+
+    p1 = topPtr;
+    p2 = original.topPtr->next;
+}
+
+while( p2 != NULL )
+{
+    p1->next = new NodeType;
+    p1 = p1->next;
+    p1->info = p2->info;
+
+    p2 = p2->next;
+}
+p1->next = NULL;
 	
 }
 
 bool StackType::hasDuplicate() const
 //naive O(N^2) approach
 {
+	if(this->IsEmpty()){return false;}
+
 	StackType temp1(*this);
-	StackType temp2(temp1);
-	while(!temp1.IsEmpty()){
-		temp2.Pop();
+	StackType temp2(*this);
+	try{
 		while(!temp2.IsEmpty()){
+			temp2.Pop();
 			if(temp2.Top() == temp1.Top()){
 				return true;
 			}
-			temp2.Pop();
 		}
-		temp1.Pop();
-	}
-	return false;
+}catch(EmptyStack)
+{	
+	temp1.Pop();
+	return temp1.hasDuplicate();
+}
 }
 

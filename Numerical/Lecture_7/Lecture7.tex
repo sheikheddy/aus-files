@@ -1,0 +1,51 @@
+\documentclass[]{article}
+\usepackage{amsmath}
+
+%opening
+\title{MTH 343 Numerical Analysis Lecture 7:}
+\author{Sheikh Abdul Raheem Ali}
+
+\begin{document}
+
+\maketitle
+
+\section{Method of False Position}
+
+Bisection/Secant Method that constructs approximating lines similar to those of secant method but always brackets the root in the manner of the bisection method. 
+
+\[ P_{n+1} = b_n - \frac{f(b_n)(b_n - a_n)}{f(b_n) - f(a_n)} \]
+
+Example: Solve $ x^2 - 2 = 0 $ for $ x $. $ f(x) = x^2 - 2, a_1 = 1, b_1 = 2. $
+
+\begin{tabular}{c c c c c}
+	$ n $ & $ a_n $ & $ b_n $ & $ P_{n+1} $ & $ f(P_{n+1}) $ \\
+	1&1&2&1.3333&-0.22222\\
+	2&1.3333&2&1.4&-0.04\\
+	3&1.4&2&1.4117&-0.00692\\
+\end{tabular}
+
+Although the method of False Position may appear superior to the Secant Method, it generally converges more slowly. 
+
+\section{Newton's Method}
+
+One of the most widely used methods.
+
+\section*{Technique}
+
+\begin{enumerate}
+	\item Start from a single initial point (estimate) $ x_0 $ that is close to the root, then move along the tangent line to its intersection with the x-axis \& take that point as the first approximation.
+	\item The procedure is continued until either the successive x-values are sufficiently close or the values of the function is sufficiently near zero.
+\end{enumerate}
+
+\begin{align*}
+	\frac{f(x_0) - 0}{x_0 - x_1} &= f'(x_0) \\
+	\frac{f(x_0)}{f'(x_0)} &= x_0 - x_1 \\
+	x_1 &= x_0 - \frac{f(x_0)}{f'(x_0)} \\
+	x_{n+1} &= x_n - \frac{f(x_n)}{f'(x_n)}
+\end{align*}
+
+This method is of order two, which means that on average it converges to a solution at roughly two additional decimal points of precision per iteration. 
+
+It fails when it encounters a maximum or minimum (as $ f'(x_n) $ would be 0 and the tangent would be parallel to the x-axis), which means it's not as suitable for functions that oscillate. 
+
+\end{document}
