@@ -48,4 +48,32 @@ This method is of order two, which means that on average it converges to a solut
 
 It fails when it encounters a maximum or minimum (as $ f'(x_n) $ would be 0 and the tangent would be parallel to the x-axis), which means it's not as suitable for functions that oscillate. 
 
+\section*{Remarks}
+
+\begin{enumerate}
+	\item Widely used, it converges rapidly (quadratic convergence). The number of decimal places accuracy nearly doubles at each iteration.
+	\item Method may converge to a root different from the expected one. 
+	\item Method may diverge if the starting value is not close enough to the root.
+	\item If we reach the max or min of a curve we fly off to infinity. 
+\end{enumerate}
+
+	\section*{Theorem}
+	
+	Newton's method is quadratically convergent. 
+	
+	\section*{Proof}
+	
+	\[ f(x) = f(a) + f'(x)(x-x_0) + \frac{f''(x)(x-x_0)^2}{2!} + \frac{f^{(3)}(x)(x-x_0)^3}{3!} + ...  \]
+	
+	$ x = P $
+	$ a = P_n $
+	
+	\begin{align*}
+		f(P) = f(P_n) + f'(P_n)(P-P_n) + \frac{f''(\xi)}{2!}(P-P_n)^2 + ... \\
+		0 = \frac{f(P_n)}{f'(P_n)} + P - P_n + \frac{f''(\xi)}{2f'(P_n)}(P-P_n)^2 + ...\\
+		P - P_n + \frac{f(P_n)}{f'(P_n)} = - \frac{f''(\xi)}{2f'(P_n)}(P-P_n)^2 \\
+		|P-P_{n+1}| = \frac{f'(\xi)}{2|f'(P_n)|}(P - P_n)^2 \\
+		|P - P_{n+1}| \le \frac{M}{2f'(P_n)}|(P-P_n)^2
+	\end{align*}
+
 \end{document}
