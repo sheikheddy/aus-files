@@ -110,14 +110,18 @@ bool Set<T>::deleteElement(T value){
 	if(!hasElement(value)){
 		return false;
 	}else{
-	//delete element
-	Set<T> temp(max_size);
-	int j = 0;
-	for(int i = 0; i < eCount-1; ++i){
-		if(getElementAt(i) != value){
-			temp.arr[j++] = arr[i];
-			}
 
+	//I had this idea in the shower to make deletions more efficient
+	//after finding the value, swap with top of array and decrement eCount
+	
+	for(int i = 0; i < eCount; ++i){
+		if(arr[i] == value){
+			T temp = arr[eCount - 1];
+			arr[eCount - 1] = value;
+			arr[i] = temp;
+			eCount--;
+			return true;
+			}
 		}
 	}
 }
@@ -258,7 +262,7 @@ Set<T>& Set<T>::operator-=(Set<T>& s){
 
 template<class Y>
 istream& operator>>(istream & cin, Set<Y>& s){
-	cout << "Enter " << s.getSize() << " elements.";
+	cout << "Enter " << s.getSize() << " elements: ";
 
 	for(int i = 0; i < s.getSize(); ++i){
 		Y var;
@@ -279,44 +283,48 @@ ostream& operator<<(ostream & cout, const Set<Y>& s){
 }
 
 int main(int argc, char* argv[]){
-Set<double> mySet;
 
-cout << "I have a set of size " << mySet.getSize() << " with " << mySet.getCount() << " elements," << endl;
+Set<double> Set1;
+cin >> Set1;
 
-cin >> mySet;
+cout << "I have a set of size " << Set1.getSize() << " with " << Set1.getCount() << " elements," << endl;
 
-cout << mySet << endl;
+double value;
+cout << "Enter a number to test if it exists in the set: ";
+cin >> value;
 
-if(mySet.hasElement(1)){
-	cout << "My set has the element 1" << endl; 
+
+if(Set1.hasElement(value)){
+	cout << "Set 1 has the element " << value << endl; 
 }else{
-	cout << "My set does not have the element 1" << endl;
+	cout << "Set 1 does not have the element " << value << endl;
 }
 
-Set<double> Set2(mySet);
-Set<double> Set3 = mySet;
+Set<double> SetA(Set1);
+Set<double> SetB = Set1;
 
-if(Set2 == Set3){
+if(SetA == SetB){
 	cout << "The copy constructor and assignment operator do the same thing" << endl;
 }
 
-Set<double> testSet;
-cin >> testSet;
+Set<double> Set2;
 
-cout << "Before union: Set 1 =  " << mySet << "\n Set 2 = " << testSet;
+cin >> Set2;
+cout << "Before union:\n Set 1 =  " << Set1 << "\n Set 2 = " << Set2 << endl;
 
-Set<double> Set4(mySet.getSize() + testSet.getSize());
-Set4 = mySet + testSet;
+Set<double> Set3(Set1.getSize() + Set2.getSize());
 
-cout << "After union: " << Set4;
+Set3 = Set1 + Set2;
 
-cout << "testSet - mySet = " << testSet - mySet;
+cout << "After union, Set 3 = Set 1 + Set 2 = " << Set3 << endl;
 
-cout << "Before incrementing values:" << Set2;
+Set3 -= Set1;
 
-Set2++;
+cout << "Set 3 minus Set 1 = " << Set3 << endl;
+cout << "Set 2 before incrementing values:" << Set2++ << endl;
+cout << "Set 2 after post-increment:" << Set2 << endl;
+cout << "Set 2 after pre-decrement: " << --Set2 << endl;
 
-cout << "After incrementing values:" << Set2;
 
 return 0;
 }
