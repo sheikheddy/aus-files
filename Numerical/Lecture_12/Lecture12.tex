@@ -1,0 +1,45 @@
+\documentclass[]{article}
+
+%opening
+\title{MTH 343 Numerical Analysis: Lecture 12}
+\author{Sheikh Abdul Raheem Ali}
+
+\begin{document}
+
+\maketitle
+
+\section*{Interpolation}
+
+	\begin{enumerate}
+		\item Solving Systems of Equations
+		\item Lagrange Polynomials
+	\end{enumerate}
+
+\begin{tabular}{c c}
+	$ x_i $ & $ f_i $ \\
+	$ x_0 $ & $ f_0 $ \\
+	$ x_1 $ & $ f_1 $ \\
+	$ x_2 $ & $ f_2 $ 
+\end{tabular}
+
+\[ P_2(x) = \frac{(x-x_1)(x - x_2)}{(x_0 - x_1)(x_0 - x_2)}f_0 + \frac{(x-x_0)(x - x_2)}{(x_1 - x_0)(x_1 - x_2)}f_1 + \frac{(x-x_0)(x - x_1)}{(x_2 - x_0)(x_2 - x_1)}f_2 \]
+
+
+\begin{tabular}{c c}
+	$ x_i $ & $ f_i $ \\
+	$ 0 $ & $ 1 $ \\
+	$ -1 $ & $ 2 $ \\
+	$ 2 $ & $ 3 $ 
+\end{tabular}
+
+\[  P_2(x) = \frac{(x+1)(x - 2)}{(0 + 1)(0 - 2)} + \frac{(x-0)(x - 2)}{(-1 - 0)(-1 - 2)}2 + \frac{(x-0)(x + 1)}{(2 - 0)(2 + 1)}3 \]
+
+$ P_n(x) = \sum_{0}^{n}L_{n,i}f(x_i) $
+
+\section*{Lagrange Polynomial Error Function}
+
+\[ E(x) = |f(x) - P_n(x)| = \frac{|(x-x_0)(x-x_1)\dots(x-x_n)f^{n+1}(\xi)|}{(n+1)!}  \]
+
+Where $ \xi  $ is the element in the smallest interval containing $ x_0,x_1,\dots,x_n $
+
+\end{document}

@@ -1,0 +1,55 @@
+\documentclass[]{article}
+
+%opening
+\title{}
+\author{}
+
+\begin{document}
+
+\maketitle
+
+
+Example: f(x) = $ 3^{-x} $ on [0,1]
+
+\section*{Closed Interval Method}
+
+\begin{enumerate}
+	\item Critical points are x = 0 \& x = 1
+	\item f'(x) = $ -3^{-x} \cdot \ln 3 \ne 0 $
+	\item f' always exists
+	\item $ f(0) = 1 $
+	\item $ f(1) = \frac{1}{3} $
+	\item $ f : [0,1] -> [\frac{1}{3}, 1] \subset [0,1] $
+	\item => There is a fixed point
+	\item |f'(0)| = ln3 > 1
+	\item No guarantee of uniqueness
+\end{enumerate}
+
+\section*{Interpolation and Polynomial Approximation}
+
+Interpolation refers to determining a function that exactly represents a collection of data. We need to compute values for a tabulated function at a point not in the table.
+
+We will find a polynomial that fits a selected set of points $ (x_{i}, f(x_i)) $ \& assumes the polynomial and function are exactly the same (1st degree polynomial is called linear interpolation).
+
+Goal is to replace some times a function by a simpler one.
+
+\section*{Applications}
+
+\begin{itemize}
+	\item Performance of a new rocket.
+	Signals are received every 10 sec. Interpolation gives the position of the rocket as well as other information. 
+	\item Astronomy:
+	When the motion of heavenly bodies is determined from periodic observations.
+\end{itemize}
+
+\section*{Lagrange Polynomials}
+
+\begin{tabular}{c | c}
+	 $ 	x  $ & $  f(x)   $ \\
+$ 	x_0 $  &  $ f(x_0) $  \\
+$ 	x_1 $  &  $ f(x_1)  $
+\end{tabular}
+
+$ P_1(x) = \frac{x-x_0}{x_0 - x_1}f_0 + \frac{x - x_1}{x_1 - x_0}f_1 $
+
+\end{document}
